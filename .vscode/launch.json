@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "command": "yarn start api",
+      "name": "Run api",
+      "request": "launch",
+      "type": "node-terminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}
