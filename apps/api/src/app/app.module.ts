@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { RepositoryModule } from './repository/repository.module';
+import { CommitModule } from './commit/commit.module';
 
 @Module({
-  imports: [RepositoryModule]
+  imports: [CommitModule]
 })
 export class AppModule {}

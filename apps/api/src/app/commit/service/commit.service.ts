@@ -5,7 +5,7 @@ import { catchError, map, Observable, } from "rxjs";
 import { GetSimplifiedCommitsResponseDTO } from "../dto/get-simplified-commits/get-simplified-commits.response.dto";
 
 @Injectable()
-export class RepositoryService {
+export class CommitService {
   constructor(private readonly github: GithubService) {}
 
   getCommits(query: GetRepository): Observable<Commit[]>  {

@@ -1,1 +1,1 @@
-export * from './repository.url'
+export * from './commit.url'
