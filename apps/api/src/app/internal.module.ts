@@ -24,4 +24,3 @@ import { join } from "path";
   ]
 })
 export class InternalModule {}
-console.log(join(__dirname, 'public'))
