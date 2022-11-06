@@ -1,5 +1,7 @@
 # Github commits history
 
+This application is deployed in Heroku, url [https://github-commits-history.herokuapp.com/](https://github-commits-history.herokuapp.com/)
+
 ## Environment variables
 ### Autogenerate
 
