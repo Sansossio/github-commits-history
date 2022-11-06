@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nx serve",
     "start:all": "nx run-many --target=serve --all --parallel --maxParallel=10",
+    "start:heroku": "node dist/apps/api/main.js",
     "build": "nx build",
     "build:all": "nx run-many --target=build --all --parallel --maxParallel=10",
     "build:package": "yarn build api && yarn build frontend",
