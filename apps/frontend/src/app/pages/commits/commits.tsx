@@ -14,7 +14,7 @@ import { Footer } from '../../components/footer/footer';
 import { CommitComponent } from '../../components/commit/commit';
 import { Commit } from '@github-commits-history/github/interfaces'
 import { ApiService } from '../../api/api.service';
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, ToggleButton } from '@mui/material';
+import { CircularProgress, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, ToggleButton } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { ErrorsDialog } from '../../config/errors';
@@ -33,6 +33,7 @@ export function CommitsPage() {
   const [commits, setCommits] = useState<Commit[]>([])
 
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [errorTitle, setErrorTitle] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -41,10 +42,10 @@ export function CommitsPage() {
     repository,
     page
   ] = [
-    queryParams.get('owner'),
-    queryParams.get('repository'),
-    +(queryParams.get('page') as string)
-  ]
+      queryParams.get('owner'),
+      queryParams.get('repository'),
+      +(queryParams.get('page') as string)
+    ]
 
   const handleChangePage = (page: number) => {
     const nvObj: any = {
@@ -67,6 +68,7 @@ export function CommitsPage() {
 
   async function getCommits() {
     try {
+      setLoading(true)
       const commits = await ApiService.getCommits({
         owner: owner as string,
         repository: repository as string,
@@ -77,11 +79,13 @@ export function CommitsPage() {
     } catch (e: any) {
       const errorMsg = ErrorsDialog[e.response.status]
       if (!errorMsg) {
-        return 
+        return
       }
       setErrorTitle(errorMsg.title)
       setErrorMessage(errorMsg.message)
       setOpen(true)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -115,21 +119,22 @@ export function CommitsPage() {
       </Dialog>
       <Container component="main">
         <Search />
+        {loading && <CircularProgress />}
         <TableContainer component={Paper}>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Date</TableCell>
-              <TableCell>Message</TableCell>
-              <TableCell>Author</TableCell>
-              <TableCell>Sha</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {commits.map((commit) => <CommitComponent key={`commit-${commit.sha}`} commit={commit} />)}
-          </TableBody>
-        </Table>
-      </TableContainer>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Date</TableCell>
+                <TableCell>Message</TableCell>
+                <TableCell>Author</TableCell>
+                <TableCell>Sha</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {commits.map((commit) => <CommitComponent key={`commit-${commit.sha}`} commit={commit} />)}
+            </TableBody>
+          </Table>
+        </TableContainer>
 
         <ToggleButton value="left" aria-label="left aligned" onClick={() => handleChangePage(page - 1)} disabled={page <= 1}>
           <ArrowBackIosIcon />
