@@ -12,7 +12,8 @@
       "name": "Run frontend",
       "request": "launch",
       "type": "node-terminal",
-      "internalConsoleOptions": "neverOpen"
+      "internalConsoleOptions": "neverOpen",
+      "envFile": "${workspaceFolder}/apps/frontend/.env"
     }
   ]
 }

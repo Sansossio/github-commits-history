@@ -14,7 +14,8 @@ import { join } from "path";
     GithubModule.registerAsync({
       imports: [ConfigModule.forRoot()],
       useFactory: (config: ConfigService) => ({
-        baseUrl: config.get<string>('github.baseUrl')
+        baseUrl: config.get<string>('github.baseUrl'),
+        apiToken: config.get<string>('github.apiToken')
       }),
       inject: [ConfigService]
     }),

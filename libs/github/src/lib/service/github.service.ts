@@ -16,6 +16,16 @@ export class GithubService {
     private readonly httpService: HttpService
   ) {}
 
+  private getAuthHeader() {
+    const { apiToken }  = this.configuration
+    if (!apiToken) {
+      return {}
+    }
+    return {
+      authorization: `Bearer ${this.configuration.apiToken}`
+    }
+  }
+
   getCommitsHistory (config: GetCommits): Observable<Commit[]> {
     return this.httpService.request<Commit[]>({
       baseURL: this.baseUrl,
@@ -23,7 +33,8 @@ export class GithubService {
       params: {
         page: config.page,
         per_page: config.per_page,
-      }
+      },
+      headers: this.getAuthHeader()
     })
       .pipe(map((val) => val.data))
   }
@@ -32,6 +43,7 @@ export class GithubService {
     return this.httpService.request<Commit>({
       baseURL: this.baseUrl,
       url: `repos/${config.owner}/${config.repository}/commits/${config.ref}`,
+      headers: this.getAuthHeader()
     })
       .pipe(map((val) => val.data))
   }

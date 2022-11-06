@@ -4,4 +4,8 @@ export interface RegisterGithubModule {
    * @default api.github.com
    */
   baseUrl?: string
+  /**
+   * Github Api token
+   */
+  apiToken?: string
 }

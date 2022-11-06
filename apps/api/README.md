@@ -14,4 +14,5 @@ APP_SWAGGER_ENABLE=true
 
 # Github api
 GITHUB_BASE_URL=https://api.github.com
+GITHUB_TOKEN=
 ```

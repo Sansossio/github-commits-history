@@ -12,6 +12,8 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
 
+  app.enableCors()
+
   setupSwagger(app)
 
   const port = configService.get<number>('app.port')

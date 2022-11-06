@@ -19,6 +19,9 @@
       "@github-commits-history/api-interface": [
         "libs/api-interface/src/index.ts"
       ],
+      "@github-commits-history/configuration": [
+        "libs/configuration/src/index.ts"
+      ],
       "@github-commits-history/github": ["libs/github/src/index.ts"],
       "@github-commits-history/github/interfaces": [
         "libs/github/src/lib/interfaces/index.ts"

@@ -1,19 +1,20 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { GetCommits } from '@github-commits-history/github/interfaces';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { DEFAULT_CONFIGURATION } from '@github-commits-history/configuration'
 
 export class GetCommitRequestDTO implements GetCommits {
-  @ApiProperty({ example: 'Sansossio' })
+  @ApiProperty({ example: DEFAULT_CONFIGURATION.repository.owner })
   @IsString()
   @IsNotEmpty()
   owner: string
 
-  @ApiProperty({ example: 'github-commits-history' })
+  @ApiProperty({ example: DEFAULT_CONFIGURATION.repository.repository })
   @IsString()
   @IsNotEmpty()
   repository: string
 
-  @ApiProperty({ example: 'efc9f58b98f96e06ef5b1482c87392693e6b6cbb' })
+  @ApiProperty({ example: DEFAULT_CONFIGURATION.repository.ref })
   @IsString()
   @IsNotEmpty()
   ref: string

@@ -1,17 +1,18 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { GetCommits } from '@github-commits-history/github/interfaces';
-import { IsNotEmpty, IsOptional, IsPositive, IsString, Max } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsPositive, IsString, Max, Min } from 'class-validator';
 import { Type } from 'class-transformer';
+import { DEFAULT_CONFIGURATION } from '@github-commits-history/configuration'
 
 const MAX_RESULTS_PER_PAGE = 100
 
 export class GetCommitsRequestDTO implements GetCommits {
-  @ApiProperty({ example: 'Sansossio' })
+  @ApiProperty({ example: DEFAULT_CONFIGURATION.repository.owner })
   @IsString()
   @IsNotEmpty()
   owner: string
 
-  @ApiProperty({ example: 'github-commits-history' })
+  @ApiProperty({ example: DEFAULT_CONFIGURATION.repository.repository })
   @IsString()
   @IsNotEmpty()
   repository: string
@@ -21,7 +22,7 @@ export class GetCommitsRequestDTO implements GetCommits {
     example: 1
   })
   @IsOptional()
-  @IsPositive()
+  @Min(0)
   @Type(() => Number)
   page?: number
 

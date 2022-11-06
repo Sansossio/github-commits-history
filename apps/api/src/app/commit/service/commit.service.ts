@@ -1,4 +1,4 @@
-import { HttpStatus, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
+import { ForbiddenException, HttpStatus, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
 import { GithubService } from "@github-commits-history/github";
 import { Commit, GetCommits } from "@github-commits-history/github/interfaces";
 import { catchError, map, Observable, } from "rxjs";
@@ -15,6 +15,10 @@ export class CommitService {
         catchError((err) => {
           if (err.response.status === HttpStatus.NOT_FOUND) {
             throw new NotFoundException()
+          }
+
+          if (err.response.status === HttpStatus.FORBIDDEN) {
+            throw new ForbiddenException("Api limit exceeded")
           }
 
           throw new InternalServerErrorException()
