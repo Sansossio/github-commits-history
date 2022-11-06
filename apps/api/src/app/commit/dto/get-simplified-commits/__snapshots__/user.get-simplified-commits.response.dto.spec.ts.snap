@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserGetSimplifiedCommitsResponseDTO should match snapshot 1`] = `
+UserGetSimplifiedCommitsResponseDTO {
+  "avatar_url": "https://google.com",
+  "id": 123,
+  "login": "username",
+  "url": "https://yahoo.com",
+}
+`;

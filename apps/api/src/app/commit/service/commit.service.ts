@@ -1,6 +1,6 @@
 import { HttpStatus, Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
 import { GithubService } from "@github-commits-history/github";
-import { Commit, GetRepository } from "@github-commits-history/github/interfaces";
+import { Commit, GetCommits } from "@github-commits-history/github/interfaces";
 import { catchError, map, Observable, } from "rxjs";
 import { GetSimplifiedCommitsResponseDTO } from "../dto/get-simplified-commits/get-simplified-commits.response.dto";
 
@@ -8,7 +8,7 @@ import { GetSimplifiedCommitsResponseDTO } from "../dto/get-simplified-commits/g
 export class CommitService {
   constructor(private readonly github: GithubService) {}
 
-  getCommits(query: GetRepository): Observable<Commit[]>  {
+  getCommits(query: GetCommits): Observable<Commit[]>  {
     return this.github.getCommitsHistory(query)
       .pipe(
         catchError((err) => {
@@ -21,7 +21,7 @@ export class CommitService {
       )
   }
 
-  getSimplifiedCommits(query: GetRepository): Observable<GetSimplifiedCommitsResponseDTO[]> {
+  getSimplifiedCommits(query: GetCommits): Observable<GetSimplifiedCommitsResponseDTO[]> {
     return this.getCommits(query)
       .pipe(map((val) => val.map(item => GetSimplifiedCommitsResponseDTO.fromGithubResponse(item))))
   }

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommitService getSimplifiedCommits should match snapshot 1`] = `
+Array [
+  GetSimplifiedCommitsResponseDTO {
+    "author": UserGetSimplifiedCommitsResponseDTO {
+      "avatar_url": undefined,
+      "id": undefined,
+      "login": undefined,
+      "url": undefined,
+    },
+    "committer": UserGetSimplifiedCommitsResponseDTO {
+      "avatar_url": undefined,
+      "id": undefined,
+      "login": undefined,
+      "url": undefined,
+    },
+    "date": 2021-11-07T05:00:00.000Z,
+    "message": "test message",
+    "sha": "sha1",
+    "url": undefined,
+  },
+  GetSimplifiedCommitsResponseDTO {
+    "author": UserGetSimplifiedCommitsResponseDTO {
+      "avatar_url": undefined,
+      "id": undefined,
+      "login": undefined,
+      "url": undefined,
+    },
+    "committer": UserGetSimplifiedCommitsResponseDTO {
+      "avatar_url": undefined,
+      "id": undefined,
+      "login": undefined,
+      "url": undefined,
+    },
+    "date": 2001-11-07T05:00:00.000Z,
+    "message": "test message",
+    "sha": "sha2",
+    "url": undefined,
+  },
+]
+`;

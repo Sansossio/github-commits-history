@@ -1,5 +1,5 @@
 import { HttpModule } from '@nestjs/axios';
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { ConfigurableModuleClass } from './github.module-definition';
 import { GithubService } from './service/github.service';
 
@@ -8,4 +8,5 @@ import { GithubService } from './service/github.service';
   providers: [GithubService],
   exports: [GithubService],
 })
+@Global()
 export class GithubModule extends ConfigurableModuleClass {}

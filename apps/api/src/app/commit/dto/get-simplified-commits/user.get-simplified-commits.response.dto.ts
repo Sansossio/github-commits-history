@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { SimpleUser } from "@github-commits-history/github/interfaces";
+import { plainToClass } from "class-transformer";
 
 export class UserGetSimplifiedCommitsResponseDTO {
   @ApiProperty()
@@ -15,11 +16,11 @@ export class UserGetSimplifiedCommitsResponseDTO {
   url: string
 
   static fromGithubResponse(user: SimpleUser): UserGetSimplifiedCommitsResponseDTO {
-    return {
+    return plainToClass(UserGetSimplifiedCommitsResponseDTO, {
       id: user.id,
       login: user.login,
       avatar_url: user.avatar_url,
       url: user.url,
-    }
+    })
   }
 }
