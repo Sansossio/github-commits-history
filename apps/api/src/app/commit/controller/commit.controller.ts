@@ -7,11 +7,21 @@ import { Observable } from "rxjs";
 import { Commit } from "@github-commits-history/github/interfaces";
 import { GetCommitsResponseDTO } from "../dto/get-commits/get-commits.response.dto";
 import { GetSimplifiedCommitsResponseDTO } from "../dto/get-simplified-commits/get-simplified-commits.response.dto";
+import { GetCommitRequestDTO } from "../dto/get-commit/get-commit.request.dto";
 
 @Controller(COMMIT_URL)
 @ApiTags('Commits')
 export class CommitController {
   constructor (private readonly service: CommitService) {}
+
+  @Get(`${GET_COMMITS_PATH}/ref`)
+  @ApiOkResponse({ type: GetCommitsResponseDTO })
+  @ApiOperation({
+    summary: 'Get repository commit details'
+  })
+  getCommit(@Query() query: GetCommitRequestDTO): Observable<Commit> {
+    return this.service.getCommit(query);
+  }
 
   @Get(GET_COMMITS_PATH)
   @ApiOkResponse({ type: GetCommitsResponseDTO, isArray: true })

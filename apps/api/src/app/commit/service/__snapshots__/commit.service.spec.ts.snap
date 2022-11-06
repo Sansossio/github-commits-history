@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CommitService getCommit should call githubService.getCommit one time 1`] = `
+Object {
+  "sha": "sha",
+}
+`;
+
 exports[`CommitService getSimplifiedCommits should match snapshot 1`] = `
 Array [
   GetSimplifiedCommitsResponseDTO {

@@ -3,6 +3,7 @@ import { GithubService } from "@github-commits-history/github";
 import { Commit, GetCommits } from "@github-commits-history/github/interfaces";
 import { catchError, map, Observable, } from "rxjs";
 import { GetSimplifiedCommitsResponseDTO } from "../dto/get-simplified-commits/get-simplified-commits.response.dto";
+import { GetCommitRequestDTO } from "../dto/get-commit/get-commit.request.dto";
 
 @Injectable()
 export class CommitService {
@@ -19,6 +20,10 @@ export class CommitService {
           throw new InternalServerErrorException()
         })
       )
+  }
+
+  getCommit(query: GetCommitRequestDTO): Observable<Commit> {
+    return this.github.getCommit(query)
   }
 
   getSimplifiedCommits(query: GetCommits): Observable<GetSimplifiedCommitsResponseDTO[]> {

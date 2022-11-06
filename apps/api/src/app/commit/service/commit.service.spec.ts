@@ -5,6 +5,7 @@ import { CommitService } from './commit.service'
 describe('CommitService', () => {
   const githubService = {
     getCommitsHistory: jest.fn(),
+    getCommit: jest.fn(),
   }
   const service = new CommitService(githubService as any)
   const query = {
@@ -18,6 +19,21 @@ describe('CommitService', () => {
 
   it('should be defined', () => {
     expect(CommitService).toBeDefined()
+  })
+
+  describe('getCommit', () => {
+    it('should call githubService.getCommit one time', async () => {
+      const data = {
+        ...query,
+        ref: '231'
+      }
+
+      githubService.getCommit.mockImplementation(() => of({ sha: 'sha' }))
+
+      await expect(firstValueFrom(service.getCommit(data))).resolves.toMatchSnapshot()
+
+      expect(githubService.getCommit).toHaveBeenCalledTimes(1)
+    })
   })
 
   describe('getCommits', () => {
