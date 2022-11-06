@@ -9,6 +9,7 @@
     "build": "nx build",
     "build:all": "nx run-many --target=build --all --parallel --maxParallel=10",
     "build:package": "yarn build api && yarn build frontend",
+    "heroku-postbuild": "yarn build:package",
     "lint": "nx lint",
     "test": "nx test",
     "tools:env:create": "node ./tools/environment/create-environment"
