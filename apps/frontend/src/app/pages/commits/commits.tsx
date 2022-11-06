@@ -21,6 +21,7 @@ import { ErrorsDialog } from '../../config/errors';
 import { createSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
 
 import './commits.scss'
+import { useCallback } from 'react';
 
 const RESULTS_PER_PAGE = 10
 
@@ -47,6 +48,35 @@ export function CommitsPage() {
       +(queryParams.get('page') as string)
     ]
 
+    const getCommits = useCallback(async () => {
+      try {
+        setLoading(true)
+        const commits = await ApiService.getCommits({
+          owner: owner as string,
+          repository: repository as string,
+          page,
+          per_page: RESULTS_PER_PAGE
+        })
+        setCommits(commits)
+      } catch (e: any) {
+        const errorMsg = ErrorsDialog[e.response.status]
+        if (!errorMsg) {
+          return
+        }
+        setErrorTitle(errorMsg.title)
+        setErrorMessage(errorMsg.message)
+        setOpen(true)
+      } finally {
+        setLoading(false)
+      }
+    }, [owner, repository, page])
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setCommits([])
+    getCommits()
+  }, [owner, repository, page, getCommits])
+
   const handleChangePage = (page: number) => {
     const nvObj: any = {
       owner,
@@ -65,35 +95,6 @@ export function CommitsPage() {
   }
 
   const handleClose = () => setOpen(false);
-
-  async function getCommits() {
-    try {
-      setLoading(true)
-      const commits = await ApiService.getCommits({
-        owner: owner as string,
-        repository: repository as string,
-        page,
-        per_page: RESULTS_PER_PAGE
-      })
-      setCommits(commits)
-    } catch (e: any) {
-      const errorMsg = ErrorsDialog[e.response.status]
-      if (!errorMsg) {
-        return
-      }
-      setErrorTitle(errorMsg.title)
-      setErrorMessage(errorMsg.message)
-      setOpen(true)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setCommits([])
-    getCommits()
-  }, [owner, repository, page])
 
   return (
     <ThemeProvider theme={theme}>

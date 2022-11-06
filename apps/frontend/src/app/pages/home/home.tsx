@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Search } from '../../components/search/search';
 import { Footer } from '../../components/footer/footer';

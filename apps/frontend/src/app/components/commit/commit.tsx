@@ -7,11 +7,10 @@ import { timeAgoFormat } from "../../utils/date.util";
 export function CommitComponent({ commit }: { commit: Commit }) {
   const handleClick = useCallback(() => {
     window.open(commit.html_url, '_blank')
-  }, [])
+  }, [commit])
 
   return (
-    <>
-      <TableRow
+    <TableRow
         key={commit.sha}
         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         className="commit-row"
@@ -22,6 +21,5 @@ export function CommitComponent({ commit }: { commit: Commit }) {
         <TableCell>{commit.commit.author?.name}</TableCell>
         <TableCell>{commit.sha}</TableCell>
       </TableRow>
-    </>
   )
 }

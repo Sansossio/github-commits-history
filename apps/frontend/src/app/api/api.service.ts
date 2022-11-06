@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { Commit, GetCommits } from "../../../../../libs/github/src/lib/interfaces";
 import { environment } from "../../environments/environment";
+import { Commit, GetCommits } from "@github-commits-history/github/interfaces";
 
 export class ApiService {
   private static apiConfig = environment.api

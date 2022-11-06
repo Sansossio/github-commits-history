@@ -22,7 +22,7 @@ export function Search(props: SearchProps) {
       pathname: '/commits',
       search: `?${createSearchParams(data as any)}`
     })
-  }, [])
+  }, [navigate])
 
   const [owner, setOwner] = React.useState(props.owner?? DEFAULT_CONFIGURATION.repository.owner)
   const [repository, setRepository] = React.useState(props.repository ?? DEFAULT_CONFIGURATION.repository.repository)
