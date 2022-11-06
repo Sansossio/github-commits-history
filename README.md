@@ -31,7 +31,7 @@ To run the application, you must follow the next steps:
 After run all applications, you can go to the follow urls:
 | App  |  Url | 
 |---|---|
-| Api | http://localhost:3333/aì |
+| Api | http://localhost:3333/api |
 | Frontend | http://localhost:4200 |### Local environment requeriments
 
 #### Local environment requeriments
