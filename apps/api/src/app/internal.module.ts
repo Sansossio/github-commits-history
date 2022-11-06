@@ -6,6 +6,7 @@ import config from "../config";
 @Module({
   imports: [
     ConfigModule.forRoot({
+      envFilePath: './apps/api/.env',
       load: config
     }),
 

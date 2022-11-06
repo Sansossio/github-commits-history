@@ -4,8 +4,10 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
+    "start:all": "nx run-many --target=serve --all --parallel --maxParallel=10",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "tools:env:create": "node ./tools/environment/create-environment"
   },
   "private": true,
   "dependencies": {
