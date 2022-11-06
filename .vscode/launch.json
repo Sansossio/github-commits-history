@@ -6,6 +6,13 @@
       "request": "launch",
       "type": "node-terminal",
       "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "command": "yarn start frontend",
+      "name": "Run frontend",
+      "request": "launch",
+      "type": "node-terminal",
+      "internalConsoleOptions": "neverOpen"
     }
   ]
 }
