@@ -84,7 +84,7 @@ export function CommitsPage() {
       page
     }
     navigate({
-      pathname: '/commits',
+      pathname: '/repository/commits',
       search: `?${createSearchParams(nvObj)}`
     })
   }

@@ -7,7 +7,7 @@ export function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/commits" element={<CommitsPage />} />
+        <Route path="/repository/commits" element={<CommitsPage />} />
       </Routes>
     </BrowserRouter>
   )

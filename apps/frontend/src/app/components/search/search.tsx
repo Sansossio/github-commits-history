@@ -19,7 +19,7 @@ export function Search(props: SearchProps) {
 
   const handleChange = useCallback((data: GetCommits) => {
     navigate({
-      pathname: '/commits',
+      pathname: '/repository/commits',
       search: `?${createSearchParams(data as any)}`
     })
   }, [navigate])
