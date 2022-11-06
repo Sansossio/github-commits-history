@@ -2,13 +2,13 @@
 
 exports[`GetSimplifiedCommitsResponseDTO should match snapshot using commit.author.date 1`] = `
 GetSimplifiedCommitsResponseDTO {
-  "author": Object {
+  "author": UserGetSimplifiedCommitsResponseDTO {
     "avatar_url": undefined,
     "id": undefined,
     "login": undefined,
     "url": undefined,
   },
-  "committer": Object {
+  "committer": UserGetSimplifiedCommitsResponseDTO {
     "avatar_url": undefined,
     "id": undefined,
     "login": undefined,
@@ -23,13 +23,13 @@ GetSimplifiedCommitsResponseDTO {
 
 exports[`GetSimplifiedCommitsResponseDTO should match snapshot using commit.commiter.date 1`] = `
 GetSimplifiedCommitsResponseDTO {
-  "author": Object {
+  "author": UserGetSimplifiedCommitsResponseDTO {
     "avatar_url": undefined,
     "id": undefined,
     "login": undefined,
     "url": undefined,
   },
-  "committer": Object {
+  "committer": UserGetSimplifiedCommitsResponseDTO {
     "avatar_url": undefined,
     "id": undefined,
     "login": undefined,
