@@ -3,9 +3,16 @@
 ## Run application
 To run the application, you must follow the next steps:
 
-- Create .env files on each application (read next section)
+- Create .env files on each application (read *environment variables section* section)
 - Install dependencies using yarn: `yarn install` or just `yarn`
 - Start application: `yarn start:all`
+
+### Applications url
+After run all applications, you can go to the follow urls:
+| App  |  Url | 
+|---|---|
+| Api | http://localhost:3333/aì |
+| Frontend | http://localhost:4200 |### Local environment requeriments
 
 ### Local environment requeriments
 
