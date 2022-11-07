@@ -1,6 +1,6 @@
-# Frontend application
+# Frontend application
 
-## Technologies
+## Technologies
 
 - React
 - MUI
